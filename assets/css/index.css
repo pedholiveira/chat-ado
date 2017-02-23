@@ -133,11 +133,11 @@ ul {
     padding: 10px 30px;
 }
 
-.caixa-conversa .mensagem.enviada {
+.caixa-conversa .mensagem.recebida {
     text-align: left;
 }
 
-.caixa-conversa .mensagem.recebida {
+.caixa-conversa .mensagem.enviada {
     text-align: right;
 }
 
@@ -148,12 +148,12 @@ ul {
 
 .caixa-conversa .mensagem.enviada span {
     position: relative;
-    background-color: #e8eaff;
+    background-color: #ff5e80;
 }
 
 .caixa-conversa .mensagem.recebida span {
     position: relative;
-    background-color: #a3aeff;
+    background-color: #e8eaff;
 }
 
 .caixa-conversa .mensagem.recebida span:after, 
@@ -168,14 +168,14 @@ ul {
 	margin-top: -11px;
 }
 
-.caixa-conversa .mensagem.recebida span:after {
+.caixa-conversa .mensagem.enviada span:after {
     left: 100%;
 	top: 50%;
 	border-color: rgba(163, 174, 255, 0);
-	border-left-color: #a3aeff;
+	border-left-color: #ff5e80;
 }
 
-.caixa-conversa .mensagem.enviada span:after {
+.caixa-conversa .mensagem.recebida span:after {
     right: 100%;
 	top: 50%;
 	border-color: rgba(232, 234, 255, 0);

@@ -44,7 +44,7 @@ ul {
 /* Login Page */
 
 .login.page {
-  background-color: #000;
+  background-image: linear-gradient(to bottom, #cf2b4f, #a32540)
 }
 
 .login.page .form {
