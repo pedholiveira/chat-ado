@@ -5,10 +5,13 @@
     <body>
         <ul class="pages">
             <li class="login page">
-                <div class="form">
-                    <h3 class="title">What's your nickname?</h3>
-                    <input class="usernameInput" type="text" maxlength="14" />
-                </div>
+                <form action="/chat" method="post">
+                    <div class="form">
+                        <h3 class="title">Qual o seu apelido?</h3>
+                        <input class="usernameInput" type="text" maxlength="14" name="apelido" />
+                    </div>
+                    <input type="submit" style="visibility: hidden"/>
+                </form>
             </li>
         </ul>
     </body>

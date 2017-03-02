@@ -1,16 +1,20 @@
-var bodyParser = require('body-parser');
 var express = require('express');
-
-var app = express();
-
-app.set('view engine', 'ejs');
-app.set('views', './app/views');
-
-app.use('/assets', express.static('assets'));
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true }));
+var load = require('express-load');
+var bodyParser = require('body-parser');
+var expressSession = require('express-session');
 
 module.exports = function() {
-    console.log('Express carregado.');
+    var app = express();
+
+    app.set('view engine', 'ejs');
+    app.set('views', './app/views');
+
+    app.use('/assets', express.static('assets'));
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(expressSession({ secret: 'chat-ado secret', saveUninitialized: false, resave: true }));
+
+    load('routes', {cwd: 'app'})
+        .into(app);
+
     return app;
 }

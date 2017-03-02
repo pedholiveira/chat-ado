@@ -1,8 +1,15 @@
 module.exports = function(app) {
-    app.get('/login', function (req, res) {
+    app.get('/', function (req, res) {
         res.render('login');
-    })
-    .get('/chat', function (req, res) {
-        res.render('chat');
+    });
+
+    app.post('/chat', function(req, res) {
+        var apelido = req.session.apelido;
+        if(!apelido) {
+            apelido = req.body.apelido;
+            req.session.apelido = apelido;
+        }
+
+        res.render('chat', { apelido: apelido});
     });
 };
