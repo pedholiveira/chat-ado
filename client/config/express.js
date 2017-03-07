@@ -10,6 +10,7 @@ module.exports = function() {
     app.set('views', './app/views');
 
     app.use('/assets', express.static('assets'));
+    app.use('/node_modules', express.static('node_modules'));
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(expressSession({ secret: 'chat-ado secret', saveUninitialized: false, resave: true }));
 

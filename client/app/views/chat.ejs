@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Chat-Ado</title>
+
+        <link href="assets/css/index.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="contatos">
+                <ul>
+                    <li class="selecionado">
+                        <div class="contato">
+                            <div class="imagem">
+                                <img src="assets/img/ninja.png" />
+                            </div>
+                            <div class="info">
+                                <span>Sistema</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="conversa">
+                <div class="caixa-conversa"> 
+                    <div class="titulo">
+                        <div class="contato">
+                            <div class="imagem">
+                                <img src="assets/img/ninja.png"/>
+                            </div>
+                            <div class="info">
+                                <span>Sistema</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul></ul>
+                </div>
+                <div class="caixa-mensagem">
+                    <div class="imagem">
+                        <img src="assets/img/eu.png" />
+                    </div>
+                    <textarea onkeypress="EventsHelper.onEnterPress(controller, controller.addMessage)" 
+                                placeholder="Digite uma mensagem..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+        <script src="assets/js/helpers/EventsHelper.js"></script>
+        <script src="assets/js/controllers/ChatiadoController.js"></script>
+        <script src="assets/js/models/Message.js"></script>
+        <script src="assets/js/models/Messages.js"></script>
+        <script src="assets/js/models/User.js"></script>
+        <script src="assets/js/models/Users.js"></script>
+        <script src="assets/js/views/View.js"></script>
+        <script src="assets/js/views/MessagesView.js"></script>
+        <script src="assets/js/views/UsersView.js"></script>
+        
+        <script>
+            var username = '<%= username %>';
+            let controller = new ChatiadoController();
+        </script>
+    </body>
+</html>

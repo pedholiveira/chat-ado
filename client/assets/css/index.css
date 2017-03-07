@@ -73,6 +73,7 @@ ul {
 
 .conversa .caixa-conversa {
     height: 80%;
+    overflow: auto;
 }
 
 .conversa .caixa-mensagem {
