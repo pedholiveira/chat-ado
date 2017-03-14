@@ -31,19 +31,49 @@ ul {
     list-style: none;
 }
 
-.contatos li {
+.contatos ul.lista-contatos li {
     cursor: pointer;
 }
 
-.contatos li.selecionado .contato {
+.contatos ul.lista-contatos li.selecionado .contato {
     background-color: #e8e8e8;
+}
+
+.contatos ul.dados-usuario li .contato {
+    background-color: #f2f2f2;
+    border-bottom-color: #cecece;
 }
 
 .contatos li .contato {
     height: 63px;
+}
+
+.contatos li .caixa-busca {
+    height: 40px;
+    background-color: #f7f7f7;
+}
+
+.contatos li .contato {
     border-bottom-style: solid;
     border-bottom-color: #e8e8e8;
     border-bottom-width: .1;
+}
+
+.contatos li .caixa-busca input {
+    background: url("../img/add.png") no-repeat 7px 7px;
+    padding-left: 30px;
+    background-position-y: 6px;
+    background-size: 18px;
+    width: 93%;
+    height: 75%;
+    margin: 5px 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.contatos li .caixa-busca input:focus {
+    outline: none;
 }
 
 /* CONTATO */
@@ -85,7 +115,6 @@ ul {
     box-sizing: border-box;
     background-color: #f8f8f8;
 }
-
 
 .conversa .caixa-mensagem textarea {
     border: none;

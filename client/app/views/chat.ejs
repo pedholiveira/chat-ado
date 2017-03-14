@@ -7,7 +7,26 @@
     <body>
         <div class="container">
             <div class="contatos">
-                <ul>
+                <ul class="dados-usuario">
+                    <li>
+                        <div class="contato">
+                            <div class="imagem">
+                                <img src="assets/img/user.png" />
+                            </div>
+                            <div class="info">
+                                <span><%=username %></span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="busca-contatos">
+                    <li>
+                        <div class="caixa-busca">
+                            <input type="text" placeholder="Procure um contato..." />
+                        </div>
+                    </li>
+                </ul>
+                <ul class="lista-contatos">
                     <li class="selecionado">
                         <div class="contato">
                             <div class="imagem">
@@ -36,7 +55,7 @@
                 </div>
                 <div class="caixa-mensagem">
                     <div class="imagem">
-                        <img src="assets/img/eu.png" />
+                        <img src="assets/img/user.png" />
                     </div>
                     <textarea onkeypress="EventsHelper.onEnterPress(controller, controller.addMessage)" 
                                 placeholder="Digite uma mensagem..."></textarea>
