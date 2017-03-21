@@ -14,7 +14,7 @@
                                 <img src="assets/img/user.png" />
                             </div>
                             <div class="info">
-                                <span><%=username %></span>
+                                <span><%= username %></span>
                             </div>
                         </div>
                     </li>
@@ -22,21 +22,11 @@
                 <ul class="busca-contatos">
                     <li>
                         <div class="caixa-busca">
-                            <input type="text" placeholder="Procure um contato..." />
+                            <input type="text" onkeypress="EventsHelper.onEnterPress(controller, controller.addUser)" placeholder="Procure um contato..." />
                         </div>
                     </li>
                 </ul>
                 <ul class="lista-contatos">
-                    <li class="selecionado">
-                        <div class="contato">
-                            <div class="imagem">
-                                <img src="assets/img/ninja.png" />
-                            </div>
-                            <div class="info">
-                                <span>Sistema</span>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
             <div class="conversa">
@@ -70,6 +60,8 @@
         <script src="assets/js/models/Messages.js"></script>
         <script src="assets/js/models/User.js"></script>
         <script src="assets/js/models/Users.js"></script>
+        <script src="assets/js/models/Talk.js"></script>
+        <script src="assets/js/models/Talks.js"></script>
         <script src="assets/js/views/View.js"></script>
         <script src="assets/js/views/MessagesView.js"></script>
         <script src="assets/js/views/UsersView.js"></script>
