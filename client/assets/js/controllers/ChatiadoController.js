@@ -75,11 +75,20 @@ class ChatiadoController {
             });
         });
         socket.on('data', data => {
-            if (data.data) {
-                let message = new Message(this._userName, data.ack, data.id, this._userName, data.data)
-                this._messages.add(message);
-                this._messagesView.update(this._messages, 'recebida');
-            }
+		if (data.data) {
+			data.data.forEach(m => {
+				let message = new Message(this._userName, data.msgNr, m.src, this._userName, m.data);
+				let talk = this._talks.getTalk(new User(m.src));
+				if(!talk) {
+					talk = new Talk(new User(m.src));
+					this._talks.add(talk);
+					this._usersView.update(this._talks.users);
+				}
+				talk.messages.add(message);
+			});
+		} else {
+			//qual formato de recebimento de mensagem??
+		}
         });
         return socket;
     }
