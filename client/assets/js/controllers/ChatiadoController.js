@@ -85,11 +85,21 @@ class ChatiadoController {
 					this._usersView.update(this._talks.users);
 				}
 				talk.messages.add(message);
+				if(this._openedTalk === talk) {
+					this._messagesView.update(this._openedTalk.messages);
+				}
 			});
-		} else {
-			//qual formato de recebimento de mensagem??
 		}
         });
+
+	setInterval(() => {
+		socket.emit('data', {
+			"cmd": "receber",
+			"id": this._userName,
+			"msgNr": 0
+		});
+	}, 5000);
+
         return socket;
     }
 }
