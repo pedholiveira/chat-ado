@@ -46,15 +46,3 @@ O cliente será executado da mesma forma que o servidor:
 <br>
 <br>
 Após isso, basta acessar <a href="http://localhost:3000/"></a> que o chat já estará disponível para uso!
-
-## Changelog
-
-Para ver as mudanças neste projeto, consulte o [arquivo de mudanças](CHANGELOG.md).
-
-## Contribuição
-
-Para contribuir com este projeto, veja o arquivo com [dicas de contribuição](CONTRIBUTING.md) e o [código de conduta](CONDUCT.md).
-
-## Licença
-
-Este projeto é licenciado sob MIT License - veja o arquivo [LICENSE.md](LICENSE.md) para mais detalhes.
