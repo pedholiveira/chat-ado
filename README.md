@@ -28,7 +28,7 @@ Antes de executar o chat, deverá ser previamente instalado na máquina a plataf
 <br>
 O servidor back-end deverá estar sendo executado na porta 8080.
 
-**Servidor Node**
+**Servidor**
 <br>
 Para executar o servidor do socket.io é necessário executar na pasta "server" os comandos abaixo:
 <br>
@@ -36,7 +36,7 @@ Para executar o servidor do socket.io é necessário executar na pasta "server" 
 <br>
 *npm start*
 
-**Cliente Cliente**
+**Cliente**
 <br>
 O cliente será executado da mesma forma que o servidor:
 <br>
