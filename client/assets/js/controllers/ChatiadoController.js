@@ -2,16 +2,24 @@ class ChatiadoController {
     constructor() {
         let $ = document.querySelector.bind(document);
 
+	    this._inputUser = $('.caixa-busca input');
+
         this._inputMessage = $('textarea');
         this._inputMessage.focus();
 
-        this._messages = new Messages();
-        this._messagesView = new MessagesView($('.caixa-conversa ul'));
+        this._selectedUser = $('.caixa-conversa .contato');
 
-        this._users = new Users();
-        this._usersView = new UsersView($('.contatos ul'));
+	    this._messagesView = new MessagesView($('.caixa-conversa ul'));
 
-        //refatorar
+        this._usersView = new UsersView($('.lista-contatos'));
+
+        this._openedTalk = new Talk(new User('Sistema'));
+        this._talks = new Talks();
+        this._talks.add(this._openedTalk);
+        this._usersView.update(this._talks.users);
+
+        this._lastNumber;
+
         this._socket    = this._configSocket();
         this._userName  = username;
     }
@@ -31,12 +39,28 @@ class ChatiadoController {
         }); 
     }
 
+	addUser(event) {
+		let userName = this._inputUser.value;
+		this._talks.add(new Talk(new User(userName)));
+		this._usersView.update(this._talks.users);
+		//limpar campo e input
+		this._cleanForm();
+		this._inputUser.value = '';
+	}	
+
+    selectUser(event) {
+        let userName = event.target.querySelector('span').textContent;
+        this._openedTalk = this._talks.getTalk(new User(userName));
+        this._messagesView.update(this._openedTalk.messages);
+        this._selectedUser.innerHTML = event.target.innerHTML;
+    }
+
     addMessage(event) {
         event.preventDefault();
 
-        let message = new Message(this._userName, this._messages.lastNumber, this._userName, '0', this._inputMessage.value);
-        this._messages.add(message);
-        this._messagesView.update(this._messages, 'enviada');
+        let message = new Message(this._userName, this._lastNumber, this._userName, this._openedTalk.user.name, this._inputMessage.value);
+        this._openedTalk.messages.add(message);
+        this._messagesView.update(this._openedTalk.messages);
         this._sendMessage(message);
 
         this._cleanForm();
@@ -53,11 +77,30 @@ class ChatiadoController {
         });
         socket.on('data', data => {
             if (data.data) {
-                let message = new Message(this._userName, data.ack, data.id, this._userName, data.data)
-                this._messages.add(message);
-                this._messagesView.update(this._messages, 'recebida');
+                data.data.forEach(m => {
+                    let message = new Message(this._userName, data.msgNr, m.src, this._userName, m.data);
+                    let talk = this._talks.getTalk(new User(m.src));
+                    if(!talk) {
+                        talk = new Talk(new User(m.src));
+                        this._talks.add(talk);
+                        this._usersView.update(this._talks.users);
+                    }
+                    talk.messages.add(message);
+                    if(this._openedTalk === talk) {
+                        this._messagesView.update(this._openedTalk.messages);
+                    }
+                });
             }
+            this._lastNumber = data.msgNr;
         });
-        return socket;
-    }
+
+        setInterval(() => {
+            socket.emit('data', {
+                "cmd": "receber",
+                "id": this._userName,
+                "msgNr": this._lastNumber
+            });
+        }, 5000);
+            return socket;
+        }
 }

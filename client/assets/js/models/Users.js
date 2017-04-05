@@ -1,6 +1,6 @@
 class Users {
-    constructor() {
-        this._users =[];
+    constructor(users = []) {
+        this._users = users;
     }
 
     add(user) {
@@ -8,6 +8,6 @@ class Users {
     }
 
     get users() {
-        return [].contat(this._users);
+        return [].concat(this._users);
     }
 }

@@ -4,10 +4,17 @@ class UsersView extends View {
     }
 
     template(model) {
-        return `<ul>
-                    ${model.user.map(u => 
-                        `<li>${u.name}</li>`
-                    ).join('')}
-                </ul>`;
+        return `${model.users.map(u => 
+               		`<li onclick="controller.selectUser(event)">
+						<div class="contato">
+							<div class="imagem">
+								<img src="https://robohash.org/${u.name}"/>
+							</div>
+							<div class="info">
+								<span>${u.name}</span>
+							</div>
+						</div>
+					</li>`
+                ).join('')}`;
     }
 }
